@@ -1,0 +1,45 @@
+---
+title: 'analyze GO terms '
+author: "H Qin"
+date: "2019-1-4"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+
+
+```{r GO.db, echo=FALSE}
+# load the GO library
+library(GO.db)
+columns(GO.db)
+```
+
+```{r}
+str(GO.db)
+```
+
+```{r}
+# extract a named vector of all terms
+goterms <- Term(GOTERM)
+goterms["GO:0000009"]
+goterms["GO:0003674"]
+```
+
+```{r}
+columns(GO.db)
+```
+
+```{r}
+  ## List the possible values for columns
+  columns(GO.db)
+  ## List the possible values for keytypes
+  keytypes(GO.db)
+  ## get some values back
+  keys <- head(keys(GO.db))
+  keys
+  select(GO.db, keys=keys, columns=c("TERM","ONTOLOGY"),
+  keytype="GOID")
+```
+
